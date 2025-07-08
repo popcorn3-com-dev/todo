@@ -20,8 +20,15 @@ const onClickAdd = () => {
     //button（完了）タグ生成
     const completeButton = document.createElement('button');
     completeButton.innerText = '完了';
+    //機能
     completeButton.addEventListener('click', () => {
-        alert('complete');
+        const moveTarget = completeButton.closest('li');
+        completeButton.nextElementSibling.remove();
+        completeButton.remove();
+        const backButton = document.createElement('button');
+        backButton.innerText = '戻す';
+        moveTarget.firstElementChild.appendChild(backButton);
+        document.getElementById('complete-list').appendChild(moveTarget);
     })
 
     //button（削除）タグ生成
